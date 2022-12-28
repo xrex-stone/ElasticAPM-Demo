@@ -4,37 +4,35 @@ In this demo, I will show you how our applications work with Elastic APM (Applic
 
 ## Launch Test Environmet
 
-Execute docker compose command to luanch the test environment.
+### 1. Execute docker compose command to launch the test environment.
 ```
 docker-compose up -d
 ```
 
-Launch the two applications
+### 2. Launch the two applications
 - Java Application : refer to ./app-demo-java/README.md
 - Python Application :  refer to ./app-demo-python/README.md
 
-
-The services include:
-
-- elasticsearch (port:9200)
-- kibana (port:5601)
-- apm-server : port=8200. Collect metrics from applications to deeply understand their performance and depencies.
-- mysql (port:3306)
-- redis (port:6379)
-- app-demo-java (port:8080) : The demo Java application.
-- app-demo-python (port:8000) : The demo Python application.
-
-
-Execute the script to simulate the HTTP requests
+### 3. Execute the script to simulate the HTTP requests
 ```
 simulate_request.sh
 ```
 
-After launch, browse Kibana website 
+### 4. After launch, browse Kibana website 
 
 http://http://127.0.0.1:5601/app/apm/services 
 
-You can see the services' metrics and dependencies as below
+The services include:
+
+- elasticsearch (`port:9200`)
+- kibana (`port:5601`)
+- apm-server : (`port:8200`). Collect metrics from applications to deeply understand their performance and depencies.
+- mysql (`port:3306`)
+- redis (`port:6379`)
+- app-demo-java (`port:8080`) : The demo Java application.
+- app-demo-python (`port:8000`) : The demo Python application.
+
+### 5. You can see the services' metrics and dependencies as below
 
 ![alt text](./images/apm-services.png)
 
@@ -44,17 +42,16 @@ You can see the services' metrics and dependencies as below
 
 
 
-
 ## Close Test Environment
 
 ```
 docker-compose down
 ```
 
-Also, shutdown the Java and python Application.
+Also, shutdown the Java and Python Application.
 
 
-## Node
+## Note
 To communicate with Elastic APM server, we need to set APM secret key for all of them. In this example, we use
 `set_your_secret_key_for_APM_server`, please change in your production.
 
