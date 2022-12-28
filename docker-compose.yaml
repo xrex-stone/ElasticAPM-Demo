@@ -38,7 +38,7 @@ services:
     environment:
       - output.elasticsearch.hosts=['http://elasticsearch:9200']
       - apm-server.host="0.0.0.0:8200"
-      - apm-server.secret_token="AAEAAWVsYXN0aWMvZmxlZXQtc2VydmVyL3Rva2VuLTE2NzE2MzQ4MDU4MDY6elZKY0N"
+      - apm-server.secret_token="set_your_secret_key_for_APM_server"
       - setup.kibana.host="kibana:5601"
       - setup.template.enabled=true
       - logging.to_files=false
@@ -47,6 +47,7 @@ services:
         condition: service_healthy
       kibana:
         condition: service_healthy
+
   mysql:
     image: mysql:8.0
     ports:
@@ -56,6 +57,7 @@ services:
       - ./data/init.sql:/data/application/init.sql
     environment:
       - MYSQL_ROOT_PASSWORD=mysql
+      
   redis:
     image: redis:6.2
     ports:

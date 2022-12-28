@@ -1,4 +1,22 @@
 
+This project is a python application. Using FastAPI as web server. Tech stack includes `FastAPI`, `uvicorn` and `elastic-apm` (Elastic APM library for python)
+
+## Prepare Dev Environment
+```
+poetry shell
+poetry install
+```
+
+## Luanch Web Server
+```
+uvicorn main:app --reload
+```
+The default port is `8000`
+
+
+## Appedix : 
+
+### The step of building the FastAPI application with poetry
 Install poetry
 ```sh
 pip install poetry
@@ -8,9 +26,9 @@ pip install poetry
 poetry init 
 ```
 
-Install FastAPI and uvicorn(ASGI Web Server)
+Install FastAPI and libraries
 ```sh
-poetry add fastapi uvicorn[standard]
+poetry add fastapi uvicorn[standard] psutil elastic-apm
 ```
 
 Activate virtual env
@@ -28,32 +46,4 @@ INFO:     Started reloader process [8396] using WatchFiles
 INFO:     Started server process [26348]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-```
-
-Integrate FlasAPI with ElasticAPM
-https://www.elastic.co/guide/en/apm/agent/python/master/starlette-support.html
-
-
-Install Elastic APM agent
-```sh
-poetry add elastic-apm
-```
-
-If see the log message 
-```
-Could not register elasticapm.metrics.sets.cpu.CPUMetricSet metricset: psutil not found. Install it to get system and process metrics
-```
-We could install `psutil` to help collect CPU metrics
-```sh
-poetry add psutil
-```
-
-Afer checking out the repo from github, execute below command.
-```
-poetry shell
-poetry install
-```
-
-```
-$ uvicorn main:app --reload
 ```

@@ -35,22 +35,7 @@ public class TodoController {
 
     @GetMapping("/{id}")
     public @ResponseBody Todo queryById(@PathVariable("id")Long id) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-
-        String cachedKey = "TODO_" + id;
-        String cachedVal = redisTemplate.opsForValue().get(cachedKey);
-        if (StringUtils.hasText(cachedVal)) {
-            logger.info("read todo (id:{}) from cache", id);
-            return mapper.readValue(cachedVal, Todo.class);
-        }
-
-        // cache if not exist with TTL 10 sec
-        Todo todo = todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found"));
-        redisTemplate.opsForValue().set(cachedKey, mapper.writeValueAsString(todo));
-        redisTemplate.expire(cachedKey, 10, TimeUnit.SECONDS);
-        logger.info("write todo (id:{}) to cache", id);
-
-        return todo;
+       return todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found"));
     }
 
     @PostMapping("/")

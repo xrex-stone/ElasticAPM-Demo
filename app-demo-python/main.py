@@ -3,7 +3,7 @@ from elasticapm.contrib.starlette import make_apm_client, ElasticAPM
 
 apm = make_apm_client({
     'SERVICE_NAME': 'app-demo-python',
-    'SECRET_TOKEN': 'AAEAAWVsYXN0aWMvZmxlZXQtc2VydmVyL3Rva2VuLTE2NzE2MzQ4MDU4MDY6elZKY0N',
+    'SECRET_TOKEN': 'set_your_secret_key_for_APM_server',
     'SERVER_URL': 'http://localhost:8200',
 })
 app = FastAPI()   
