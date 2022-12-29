@@ -24,5 +24,5 @@ curl --location --request GET 'http://127.0.0.1:8080/todo/'
 curl --location --request GET 'http://127.0.0.1:8080/todo/1'
 
 # Do complex operation query (connect Redis, MySQL and remote serivce)
-curl --location --request GET 'http://127.0.0.1:8000//todo/complex_operation'
+curl --location --request GET 'http://127.0.0.1:8080/todo/complex_operation'
 
